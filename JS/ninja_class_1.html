@@ -15,23 +15,47 @@
         var strength = 3;
 
         this.showStats = function(){
-            console.log("Name:" + this.name + ", Health:" + this.health + ", Speed:" + speed + ", Strength:" + strength);
+            console.log("Name: " + this.name + ", Health:" + this.health + ", Speed:" + speed + ", Strength:" + strength);
             return this;
         }
 
-        this.sayName = function(){
+        Ninja.prototype.sayName = function(){
             console.log("Name is: " + this.name)
             return this;
         }
 
-        this.drinkSake = function(){
+        Ninja.prototype.drinkSake = function(){
             this.health += 10;
+            return this;
+        }
+
+        Ninja.prototype.punch = function(ninja) {
+            ninja.health -= 5;
+            console.log(ninja.name + "was attacked by " + this.name + " and lost 5 Health!");
+            ninja.showStats();
+            return this;
+        }
+
+        this.kick = function(ninja) {
+            const damage = strength * 15;
+            ninja.health -= damage;
+            console.log(ninja.name + "was kicked by " + this.name + " and was dealt " + damage + " hit points in damage!");
             return this;
         }
     }
     const ninja1 = new Ninja("Mendel");
-    ninja1.showStats().sayName().drinkSake().drinkSake().showStats();
+    const ninja2 = new Ninja("Michael Choi");
       
+    ninja1.sayName();
+    ninja2.sayName();
+
+    ninja1.punch(ninja2);
+    ninja1.punch(ninja2);
+
+    ninja1.kick(ninja2);
+
+    ninja1.showStats();
+    ninja2.showStats();
     </script>
 </body>
 </html>
