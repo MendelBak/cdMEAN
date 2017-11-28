@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scratch</title>
+</head>
+
+<body>
+    <script>
+        // This is a function that just prints the result of another list of instructions
+        function printResult(doSomething) {
+            var result = doSomething(); // store the return value of the callback parameter
+            console.log(result); // print the ressult!
+        }
+        printResult(() => {
+            return 5
+        }); // this should print "5"
+printResult(55)
+    </script>
+</body>
+
+</html>
