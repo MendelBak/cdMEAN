@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Here are all the users:</h2>
+    <% for (var x in users) { %>
+        <h3>Name:
+            <%= users[x].name %>
+        </h3>
+        <h4>Email:
+            <%= users[x].email %>
+        </h4>
+        <hr>
+        <% } %>
+
+
+            <form action="users_form" method="post">
+                <br>
+                <br>
+                <input type="text" name="name" placeholder="Name">
+                <br>
+                <br>
+                <input type="text" name="email" placeholder="Email">
+                <br>
+                <br>
+                <input type="submit" value="Submit Form">
+            </form>
+            <form action="/users/1" method="get">
+                <input type="submit" value="Get User 1">
+            </form>
+</body>
+
+</html>
