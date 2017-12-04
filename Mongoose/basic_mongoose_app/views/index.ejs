@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Hi</h1>
+  
+    <form action="/submit" method="post">
+      Brand: <input type="text" name="brand">
+      Model: <input type="text" name="model">
+      Color: <input type="text" name="color">
+      <input type="submit" value="SUBMIT">
+    </form>
+
+    <% for(var i = 0; i < cars.length; i++) { %>
+      <p> Brand: <%= cars[i].brand %> Model: <%= cars[i].model %> Color: <%= cars[i].color %></p>
+    <% } %>
+
+   
+  </body>
+</html>

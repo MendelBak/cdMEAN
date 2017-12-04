@@ -37,9 +37,9 @@ app.get('/add_two', function(req, res){
 });
 
 
-app.listen(6130, function(){
+app.listen(8000, function(){
     console.log(__dirname);
-    console.log("Listening on port 6130");
+    console.log("Listening on port 8000");
 });
 
 // //************ functions *******/

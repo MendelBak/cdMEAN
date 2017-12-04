@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mongoose Profile</title>
+</head>
+
+<body>
+    <h1>profile.ejs</h1>
+    <p>
+        Name:
+        <%= thisMong.name %>. 
+        <br><br>
+        Age:<%= thisMong.age%>. 
+        <br><br>
+        Hobby:<%= thisMong.hobby %>.</p>
+              
+                <a href="/edit/<%=thisMong._id %>">Edit This Mongoose</a>
+                <br><br>
+                <a href="/">Go Home</a>
+
+
+
+</body>
+
+</html>
