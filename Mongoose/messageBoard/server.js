@@ -88,9 +88,9 @@ app.post("/new_comment/:id", function (req, res) {
         });
         // save the new comment into the db.
         comment.save(function (errorsComment1) {
-            //  In the collumn _comments (which is an array) of this specific message where we are commenting, push the entire comment (as an object)
+            //  In the column _comments (which is an array) of this specific message where we are commenting, push the entire comment (as an object)
             message._comments.push(comment);
-            // Save the updated collumn
+            // Save the newly pushed and updated column in Message Schema
             message.save(function(error2){
                 if (errorsComment1) {
                     console.log("There was an error inserting the new comment into the DB.");

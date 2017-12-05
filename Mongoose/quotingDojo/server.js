@@ -49,7 +49,7 @@ app.post("/send_quote", function (req, res) {
         }
     });
 });
-
+ 
 app.get('/quotes', function (req, res) {
     Quote.find({}, function (errors, dbQuotes) {
         if (errors) {
