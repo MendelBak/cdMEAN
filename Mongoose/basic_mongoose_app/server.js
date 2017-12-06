@@ -30,7 +30,7 @@ var CarsSchema = new mongoose.Schema({
 });
 mongoose.model('Car', CarsSchema);
 
-var Car = mongoose.model('Car')
+var Car = mongoose.model('Car');
 // SCHEMA INSTANSIATION //
 
 
