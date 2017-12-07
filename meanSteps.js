@@ -50,3 +50,26 @@ cd c:/"Program Files"/MongoDB/Server/3.4/bin/
 // In ANOTHER terminal tab/ window 
 cd c:/"Program Files"/MongoDB/Server/3.4/bin/
 ./mongo (mongo.exe if in cmd)
+
+
+// ************** SETTING UP MODULAR FILE STRUCTURE in Node/Mongoose********************//
+// Total of 5 new files are created.
+Client Folder{
+    Static Folder
+    Views Folder
+} //End Client FOlder
+
+Server Folder{
+    Config Folder{
+        dbConnector.js
+        routes.js
+    }
+    Controllers Folder{
+        controller.js
+    }
+    Models Folder{
+        model.js
+    }
+} //End Server Folder
+server.js
+//***********************END MODULAR FILE STRUCTURE SETUP STEPS *************************************//
