@@ -18,6 +18,7 @@ MyNode = (function () {
     };
     return MyNode;
 }());
+
 myNodeInstance = new MyNode(1);
 console.log(myNodeInstance.val);
 function myFunction() {
@@ -29,9 +30,36 @@ function sendingErrors() {
 }
 
 
-// ******************************** //
-mynum: number = 5;
-myString: string = 5;
-myArr: [] = [1,2,3,4];
-myObj: {} = {name: "Bill"};
-anythingVariable: 
+// ****************TYPESCRIPT**************** //
+const mynum: number = 5;
+const myString: string = "Hello World";
+const myArr: Array<number> = [1,2,3,4];
+
+let myObj: { [key: string]: (string | number) } = {name: "Bill"};
+let anythingVariable: any = "Hey";
+anythingVariable = 25;
+
+const arrayOne: boolean[] = [true, false, true, false];
+const arrayTwo: (number | string | boolean)[] = [1, 'abc', true, 2];
+
+myObj = {x: 5, y: 10};
+
+class MyNode {
+    private _price: number;
+    constructor(public val: number) {}
+
+    doSomething(): void{
+        this.priv = 10;
+    }
+}
+
+const myNodeInstance: MyNode = new MyNode(1);
+console.log(myNodeInstance.val);
+
+function myFunction(): void {
+    console.log('Hello World');
+    return;
+}
+function sendingErrors(): never {
+    throw new Error('Error Message');
+}

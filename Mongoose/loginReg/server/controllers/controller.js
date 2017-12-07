@@ -9,7 +9,7 @@ module.exports = {
     },
     register: function (req, res) {
         var newUser = new User({
-            firstName: req.body.firstName,
+            firstName: req.body.firstName, 
             lastName: req.body.lastName,
             email: req.body.email,
             password: req.body.password,
