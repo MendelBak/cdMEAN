@@ -1,0 +1,20 @@
+.ng-invalid { 
+    color: red;
+    font-weight: bold;}
+.ng-valid { 
+    color: fuchsia;
+    font-weight: bold;
+}
+.ng-dirty{
+    color: brown;
+    font-weight: bold;
+}
+.ng-pristine{
+    color: silver;
+}
+.ng-touched{
+    background-color: greenyellow;
+}
+.ng-untouched{
+    background-color: rosybrown;
+}

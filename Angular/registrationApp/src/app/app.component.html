@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Log in Registration</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+
+    <div class="registerMsg" *ngIf="switch">
+      <p>
+        Thank you, {{ tempUser.firstName }} {{ tempUser.lastName }} for registering with us. We just sent you a confirmation email at {{ tempUser.email }} and we will send all mail to {{ tempUser.address }}, Apt # {{ tempUser.aptNum }}, {{ tempUser.city }}, {{ tempUser.state }}. Have a fantastic day.
+      </p>
+    </div>
+
+    <div class="form">
+      <form #registerForm="ngForm" (submit)="onSubmit()">
+
+        <input type="text" 
+        name="firstName" 
+        placeholder="First Name"
+        required
+        minlength="4"
+        maxlength="24"
+        [(ngModel)]="user.firstName" 
+        #firstName="ngModel"
+        >
+        <span *ngIf="firstName.errors != null && !firstName.pristine" class="errorFlashMsg">First Name must be between 4 and 24 characters</span>
+        <span *ngIf=(!firstName.errors) class="noErrorFlashMsg">First Name is looking good!</span>
+        <br><br>
+        
+        <input type="text" 
+        name="lastName" 
+        placeholder="Last Name"
+        required
+        minlength="3"
+        maxlength="24"
+        [(ngModel)]="user.lastName" 
+        #lastName="ngModel"
+        >
+        <span *ngIf="lastName.errors != null && !lastName.pristine" class="errorFlashMsg">Last Name must be between 3 and 24 characters</span>
+        <span *ngIf=(!lastName.errors) class="noErrorFlashMsg">Last Name is looking good!</span>
+        <br><br>
+
+        <input type="text" 
+        name="email" 
+        placeholder="email"
+        required
+        minlength="4"
+        maxlength="24"
+        pattern=
+        ^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$
+        [(ngModel)]="user.email"
+        #email="ngModel"
+        >
+        <span *ngIf="email.errors != null && !email.pristine" class="errorFlashMsg">Email must be between 4 and 24 characters</span>
+        <span *ngIf=(!email.errors) class="noErrorFlashMsg">Email is looking good!</span>
+        <br><br>
+
+        <input type="text" 
+        name="password" 
+        placeholder="Password"
+        required
+        minlength="8"
+        maxlength="30"
+        pattern="^([a-zA-Z0-9@*#]{8,15})$"
+        [(ngModel)]="user.password"
+        #password="ngModel"
+        > 
+        <span *ngIf="password.errors != null && !password.pristine" class="errorFlashMsg">Password must be between 8 and 30 characters</span>
+        <span *ngIf=(!password.errors) class="noErrorFlashMsg">Password is looking good!</span>
+        <br><br>
+
+        <input type="text" 
+        name="checkPassword" 
+        placeholder="Confirm Password"
+        required
+        minlength="6"
+        maxlength="30"
+        pattern="^([a-zA-Z0-9@*#]{8,15})$"
+        [(ngModel)]="user.checkPassword"
+        #checkPassword="ngModel"
+        >
+        <span *ngIf="user.checkPassword != user.password && !checkPassword.pristine" class="errorFlashMsg">Passwords do not match.</span>
+        <span *ngIf="user.checkPassword === user.password && !password.pristine && !checkPassword.pristine" class="noErrorFlashMsg">Passwords match!</span>
+        <br><br>
+
+        <input type="text" 
+        name="address" 
+        placeholder="Street Address"
+        required
+        minlength="6"
+        maxlength="30"
+        [(ngModel)]="user.address"
+        #address="ngModel"
+        >
+        <span *ngIf="address.errors != null && !address.pristine" class="errorFlashMsg">Address must be between 6 and 30 characters</span>
+        <span *ngIf=(!address.errors) class="noErrorFlashMsg">Address is looking good!</span>
+        <br><br>
+
+        <input type="text" 
+        name="aptNum" 
+        placeholder="Unit or Apt #"
+        [(ngModel)]="user.aptNum"
+        #aptNum="ngModel"
+        >
+        <br><br>
+
+        <input type="text" 
+        name="city" 
+        placeholder="City"
+        required
+        minlength="4"
+        maxlength="24"
+        [(ngModel)]="user.city"
+        #city="ngModel"
+        >
+        <span *ngIf="city.errors != null && !city.pristine" class="errorFlashMsg">Citymust be between 4 and 30 characters</span>
+        <span *ngIf=(!city.errors) class="noErrorFlashMsg">City is looking good!</span>
+        <br><br>
+
+        State: <select name="state"
+        required
+        [(ngModel)]="user.state"
+        #state="ngModel"
+        >
+          <option *ngFor="let state of states" name="stateOption"> {{ state }} </option>
+        </select>
+        <span *ngIf="state.errors != null && !state.pristine" class="errorFlashMsg">Please select a city from the dropdown menu.</span>
+        <span *ngIf=(!state.errors) class="noErrorFlashMsg">City is looking good!</span>
+        <br><br>
+
+        I'm Feeling Lucky?:
+        <br>
+        Yes <input 
+        type="radio" 
+        name="lucky" 
+        value="yes"
+        [(ngModel)]="user.lucky"
+        #lucky="ngModel"
+        >
+        
+        No <input 
+        type="radio" 
+        name="feelingLuckyNo"
+        value="no"
+        checked
+        required
+        [(ngModel)]="user.lucky"
+        #lucky="ngModel"
+        >
+        <span *ngIf="lucky.errors != null && !lucky.pristine" class="errorFlashMsg">Are you feeling lucky? Please select an option.</span>
+        <br><br>
+
+        <button type="submit" [disabled]="!registerForm.valid || user.password != user.checkPassword">Submit Form</button>
+
+      </form>
+    </div>
+
+</body>
+</html>

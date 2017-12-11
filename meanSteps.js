@@ -73,3 +73,15 @@ Server Folder{
 } //End Server Folder
 server.js
 //***********************END MODULAR FILE STRUCTURE SETUP STEPS *************************************//
+
+
+// Import these modules for forms (and other things) to work in Angular. Place in app.module.ts file.
+
+import { FormsModule } from '@angular/forms'; // <-- Import FormsModule
+import { HttpModule } from '@angular/http'; // <-- Import HttpModule
+
+imports: [
+    BrowserModule,
+    FormsModule, // <-- Include module in our AppModules
+    HttpModule // <-- Include module in our AppModules
+  ],

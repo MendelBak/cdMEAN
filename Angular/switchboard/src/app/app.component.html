@@ -2,7 +2,7 @@
 <div style="text-align:center">
   <h1>Switchboard</h1>
 
-  <div *ngFor="let i of myArr, let idx = index"class="background">
+  <div *ngFor="let i of myArr, let idx = index" class="background">
     <button (click)="switchButton(idx)" [ngClass]="{on: i, off: !i}">
       <span *ngIf=(i)>ON</span>
       <span *ngIf=(!i)>OFF</span>

@@ -1,0 +1,13 @@
+h1{
+    text-align: center;
+}
+
+.errorFlashMsg{
+    color: red;
+}
+.noErrorFlashMsg{
+    color: green;
+}
+.RegisterMsg{
+    text-align: center;
+}
