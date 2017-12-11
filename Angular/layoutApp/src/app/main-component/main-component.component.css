@@ -1,0 +1,11 @@
+#main{
+    height: 400px;
+    width: 500px;
+    vertical-align: top;
+    text-align: center;
+    background-color: rgb(79, 79, 255);
+    border: 5px solid black;
+    display: inline-block;
+    margin-left: 300px;
+    margin-top: 25px;
+}

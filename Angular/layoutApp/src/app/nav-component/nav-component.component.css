@@ -1,0 +1,9 @@
+#nav{
+    vertical-align: top;
+    text-align: center;
+    background-color: rgb(79, 79, 255);
+    border: 5px solid black;
+    display: inline-block;
+    height: 400px;
+    margin-top: 25px;
+}
