@@ -1,0 +1,15 @@
+<div>
+  <fieldset *ngFor="let unit of units">
+    <legend > {{ unit.name |json }} </legend>
+    Hitpoints:{{ unit.hitpoints | json}} Attack:{{unit.attack |json}}
+    <p>
+      Number of {{ unit.name |json }}s in your army: {{ totalUnits | json }}
+    </p>
+    <p>
+      Total Hitpoints of Your Army: {{unit.hitpoints * totalUnits | json}}
+    </p>
+    <p>
+      Total Attack of Your Army: {{ unit.attack * totalUnits | json}}
+    </p>
+  </fieldset>
+</div>

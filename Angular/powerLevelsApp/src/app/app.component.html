@@ -1,0 +1,16 @@
+<div>
+  <h4>App Component</h4>
+  <h3>Insert Number of Units in Your Army</h3>
+  <form (click)="onSubmit()">
+    <input 
+    type="number" 
+    name="numOfUnits"
+    minlength="1"
+    maxlength="100"
+    [(ngModel)]="numOfUnits"
+    #totalUnits="ngModel"
+    >
+    <button type="submit">Calculate Total Stats of Units in your Army</button>
+  </form>
+</div>
+<app-display-component  [totalUnits]="numOfUnits"></app-display-component>
