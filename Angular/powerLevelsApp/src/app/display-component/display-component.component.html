@@ -1,15 +1,16 @@
 <div>
   <fieldset *ngFor="let unit of units">
-    <legend > {{ unit.name |json }} </legend>
-    Hitpoints:{{ unit.hitpoints | json}} Attack:{{unit.attack |json}}
+    <legend > {{ unit.name }} </legend>
+    Hitpoints:{{ unit.hitpoints }} Attack:{{unit.attack }}
     <p>
-      Number of {{ unit.name |json }}s in your army: {{ totalUnits | json }}
+      Number of {{ unit.name}}s in your army: {{ totalUnits }}
     </p>
     <p>
-      Total Hitpoints of Your Army: {{unit.hitpoints * totalUnits | json}}
+      Total Hitpoints of Your Army: {{unit.hitpoints * totalUnits}}
     </p>
     <p>
-      Total Attack of Your Army: {{ unit.attack * totalUnits | json}}
+      Total Attack of Your Army: {{ unit.attack * totalUnits }}
     </p>
+    <p [ngStyle]="{'font-weight': 'bold'}" *ngIf="(unit.attack * totalUnits) >= 100">These units total over 100 total attack!</p>
   </fieldset>
 </div>

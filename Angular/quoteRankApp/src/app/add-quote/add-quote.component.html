@@ -1,0 +1,35 @@
+<h1>Add a Quote</h1>
+
+<form #formData="ngForm" (submit)="onSubmit()" >
+  <textarea rows="10" cols="20" 
+  name="quote" 
+  placeholder="Write quote here"
+  required
+  minlength="3"
+  maxlength="100"
+  [(ngModel)]="quote.quote"
+  #quoteText="ngModel"
+  >
+  </textarea>
+  <span *ngIf="quoteText.errors != null && !quoteText.pristine">Quote is not valid.</span>
+
+  <br><br>
+
+  <input type="text" 
+  name="author" 
+  placeholder="Author Name" 
+  required
+  minlength="1"
+  maxlength="50"
+  [(ngModel)]="quote.author"
+  #quoteAuthor="ngModel"
+  >
+  <span *ngIf="quoteAuthor.errors != null && !quoteAuthor.pristine">Author Nameis not valid.</span>
+
+  <br><br>
+
+  <button type="submit" [disabled]="!formData.valid">Submit Quote</button>
+
+  <br><hr>
+
+</form>

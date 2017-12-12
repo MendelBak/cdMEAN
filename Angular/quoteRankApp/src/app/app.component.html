@@ -1,0 +1,15 @@
+<app-add-quote (quoteEvent)="quoteFromChild($event)">
+</app-add-quote>
+
+<h1>Quotes List</h1>
+
+<div *ngFor="let quote of quotes"> 
+  <fieldset>
+      {{ quote.quote }} {{ quote.author }} 
+    <button class="upVote"type="submit">Up Vote</button>
+    <br><br>
+    <button class="downVote" type="submit">Down Vote</button>
+    <br><br>
+    <button class="deleteQuote" type="submit">Delete Quote</button>
+  </fieldset>
+</div>
