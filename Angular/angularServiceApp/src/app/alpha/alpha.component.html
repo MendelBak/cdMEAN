@@ -1,0 +1,10 @@
+
+<form (submit)="addNum()">
+  <input type="number" name="number" placeholder="Add a number" [(ngModel)]="testNum">
+  <button >Push to add a number</button>
+</form>
+
+
+<ul>
+  <li *ngFor="let number of numbers">{{ number }}</li>
+</ul>

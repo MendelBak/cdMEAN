@@ -85,3 +85,12 @@ imports: [
     FormsModule, // <-- Include module in our AppModules
     HttpModule // <-- Include module in our AppModules
   ],
+
+// Creating a new Service
+ng generate service <name of service>
+// import service in module.ts of app-component
+import { DataService } from './data.service';
+providers: [ DataService ],
+// Inject the service into all the components that will use it (capitalized)
+import { DataService } from '../data.service';
+constructor(private _dataService: DataService) { }
