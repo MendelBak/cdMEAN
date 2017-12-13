@@ -77,13 +77,16 @@ server.js
 
 // Import these modules for forms (and other things) to work in Angular. Place in app.module.ts file.
 
-import { FormsModule } from '@angular/forms'; // <-- Import FormsModule
-import { HttpModule } from '@angular/http'; // <-- Import HttpModule
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http'; 
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 imports: [
     BrowserModule,
-    FormsModule, // <-- Include module in our AppModules
-    HttpModule // <-- Include module in our AppModules
+    FormsModule,
+    HttpModule,
+    HttpClientModule
   ],
 
 // Creating a new Service

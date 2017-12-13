@@ -12,7 +12,8 @@ export class LogComponent implements OnInit {
 
   constructor(private _dataService: DataService) { }
 
-
+// Why does this work to display the log dynamically?
+// I thought OnInit only checks once, when the page (or element) initializes for the first time!
   ngOnInit() {
     this.captainsLog = this._dataService.captainsLog;
   }

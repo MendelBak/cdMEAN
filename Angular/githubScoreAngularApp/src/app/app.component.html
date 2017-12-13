@@ -1,0 +1,24 @@
+<h1>App Component/ Github Score</h1>
+
+<div>
+  <form #gitForm="ngForm" (submit)="getGithubScore()">
+    <input type="text" name="username" placeholder="Github Username" required minlength="3" [(ngModel)]='username'>
+    <button type="submit" [disabled]="!gitForm.valid">Calculate my Github Score</button>
+  </form>
+</div>
+
+<h3>Display Score Component</h3>
+<div>
+  <h1>Username: {{ results.login }} </h1>
+  <h3>Bio: {{ results.bio }} </h3>
+  <h1>Your Score: {{ score }} </h1>
+  <!-- <h3> {{ message }} </h3> -->
+  <h3 *ngIf="userExists === false"> User {{ username }} does not seem to exist. Please submit, or check your spelling and try again.</h3>
+  <div *ngIf="userExists">
+    <h5 class='red' *ngIf="score < 20">Needs Work!</h5>
+    <h5 class='orange' *ngIf="score >= 20 && score < 50">A decent start!</h5>
+    <h5 *ngIf="score >= 50 && score < 100">Doing good!</h5>
+    <h5 class='green' *ngIf="score >= 100 && score < 200">Great Job!</h5>
+    <h5 class='blue' *ngIf="score >= 200">Github Elite!</h5>
+  </div>
+</div>
