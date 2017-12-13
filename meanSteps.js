@@ -88,7 +88,7 @@ imports: [
 
 // Creating a new Service
 ng generate service <name of service>
-// import service in module.ts of app-component
+// import service in module.ts 
 import { DataService } from './data.service';
 providers: [ DataService ],
 // Inject the service into all the components that will use it (capitalized)

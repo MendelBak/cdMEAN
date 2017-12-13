@@ -1,0 +1,9 @@
+<h3>Location Component</h3>
+
+<div *ngFor="let location of locationsArr, let idx = index">
+  <fieldset>
+    <h2>{{ location.name }}</h2>
+    <h3>Earns {{ location.gold }} Gold</h3>
+    <button (click)="buttonClick(idx)">{{ location.selection }}</button>
+  </fieldset>
+</div>
