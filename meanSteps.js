@@ -78,8 +78,7 @@ server.js
 // Import these modules for forms (and other things) to work in Angular. Place in app.module.ts file.
 
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http'; 
-import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
 imports: [
@@ -97,3 +96,26 @@ providers: [ DataService ],
 // Inject the service into all the components that will use it (capitalized)
 import { DataService } from '../data.service';
 constructor(private _dataService: DataService) { }
+
+
+//  Creating a new routing page
+//  When creating project for the first time add --routing to command
+ng new <project name> --routing
+// Inject components into routing file
+import { LandingComponent } from './landing/landing.component';
+// Add routing to routing file
+const routes: Routes = [
+    {
+      path: '',
+      pathMatch: 'full',
+      component: LandingComponent,
+      children: []
+    }
+  ];
+// Inject the Activated Route module into your components
+import { Router } from '@angular/router';
+constructor( private _route: Router ) { }
+// Place this in your constructor
+this._route.paramMap.subscribe( params => {
+    console.log(params.get('id'));
+});

@@ -1,0 +1,22 @@
+
+<form #formVar="ngForm" (submit)="createNewProduct()">
+  <h1>Create a New Product</h1>
+  <input type="text" 
+  placeholder="Item Name" 
+  name="name" 
+  requiredminlength="3"
+  maxlength="30"
+  [(ngModel)]="newProduct.name"
+  #nameVar = "ngModel"
+  >
+  
+  <input type="number" 
+  placeholder="Item Price" 
+  name="price" 
+  required
+  minlength="1"
+  [(ngModel)]="newProduct.price"
+  #priceVar = "ngModel"
+  >
+  <button type="submit" [disabled]="!formVar.valid">Create New Product</button>
+</form>

@@ -1,0 +1,27 @@
+<br><br><hr>
+
+<fieldset>
+  Product Name: {{ oldProduct.name }}. - Product Price: {{ oldProduct.price }}
+</fieldset>
+
+<form #formVar="ngForm" (submit)="onSubmit()">
+  <h1>Edit Your Product</h1>
+  <input type="text" 
+  placeholder="Item Name" 
+  name="name" 
+  required
+  minlength="3" 
+  maxlength="30" 
+  [(ngModel)]="updatedProduct.name"
+  #nameVar="ngModel">
+
+  <input type="number" 
+  placeholder="Item Price" 
+  name="price" 
+  required 
+  minlength="1" 
+  [(ngModel)]="updatedProduct.price" 
+  #priceVar="ngModel">
+
+  <button type="submit" [disabled]="!formVar.valid">Edit Product</button>
+</form>
