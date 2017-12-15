@@ -17,7 +17,7 @@ app.get("/", function(req, res){
 });
 
 app.post('/form_submit', function(req, res){
-    console.log(req.body)
+    console.log(req.body);
     req.session.formData = req.body;
     res.redirect("/form_results");
 });

@@ -38,7 +38,7 @@ module.exports = {
             _id: req.params.id
         }, function (errorsProfile, dbMong) {
             if (errorsProfile) {
-                console.log("There was an error with the profile route.")
+                console.log("There was an error with the profile route.");
             } else {
                 res.render("profile", {
                     thisMong: dbMong

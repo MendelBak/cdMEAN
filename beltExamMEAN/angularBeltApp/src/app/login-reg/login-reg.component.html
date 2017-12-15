@@ -1,0 +1,31 @@
+<h1>
+  loginReg component
+</h1>
+
+<div>
+  <form (submit)="formSubmit()">
+    <input type="text" name="username" 
+    placeholder="Username"
+    required
+    minlength="3"
+    [(ngModel)]="newUser.username">
+
+    <input type="text" 
+    name="email" 
+    placeholder="Email"
+    required
+    minlength="4"
+    [(ngModel)]="newUser.email">
+
+    <input 
+    type="text" 
+    name="password" 
+    placeholder="Password"
+    required
+    minlength="4"
+    [(ngModel)]="newUser.password">
+    <button type="submit">Submit</button>
+  </form>
+
+  <button (click)="getAllUsers()">Get All Users</button>
+</div>

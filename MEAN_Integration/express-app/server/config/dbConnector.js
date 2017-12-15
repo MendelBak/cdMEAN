@@ -2,7 +2,8 @@ var mongoose = require("mongoose");
 var fs = require('fs');
 var path = require('path');
 
-mongoose.connect('mongodb://localhost/loginReg');
+// This connects to the DB
+mongoose.connect('mongodb://localhost/integrationPractice');
 
 // create a variable that points to the path where all of the models live
 var models_path = path.join(__dirname, './../models');
