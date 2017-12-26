@@ -41,7 +41,7 @@ server.js
 //***********************END MODULAR FILE STRUCTURE SETUP STEPS *************************************//
 
 
-//  boilerplate for server.js
+//  boilerplate for server.js (!!!CHANGE DIST FILE NAME!!)
 var express = require("express");
 var path = require("path");
 var app = express();
@@ -49,10 +49,7 @@ var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
 var session = require('express-session');
 
-app.set('views', path.join( __dirname, './client/views'));
-app.set('view engine', 'ejs');
 
-app.use(express.static(path.join(__dirname, "./client/static")));
 app.use(bodyParser.json())
 app.use(express.static(__dirname + '/angularBeltApp/dist'));
 app.use(session({secret: 'codingdojorocks'}));
@@ -127,6 +124,7 @@ module.exports = {
     }
 
 };
+
 //***************   END controller.js ******************//
 
 
@@ -145,6 +143,7 @@ var UserSchema = new mongoose.Schema({
 
 
 mongoose.model("User", UserSchema);
+
 // *********** END models.js ******************//
 
 
@@ -164,6 +163,7 @@ module.exports = function (app) {
     });
 
 };
+
 //**************** END routes.js ****************** *//
 
 //****************** index.ejs form template  ***********//
@@ -230,7 +230,7 @@ constructor(private _dataService: DataService) { }
 //  When creating project for the first time add --routing to command //
 ng new <project name> --routing
 
-// Inject components into app-routing0modules.ts file  //
+// Inject components into app-routingmodules.ts file  //
 import { LandingComponent } from './landing/landing.component';
 // Add routing to routing file
 const routes: Routes = [

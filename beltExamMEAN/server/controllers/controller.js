@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 var User = mongoose.model("User");
+var Question = mongoose.model("Question");
 var bcrypt = require('bcrypt-nodejs');
 
 module.exports = {
@@ -11,8 +12,6 @@ module.exports = {
         console.log("Made it to controller.js form submit");
         var newUser = new User({
             username: req.body.username,
-            email: req.body.email,
-            password: req.body.password
         });
         newUser.save(function (saveUserErrors, newUserInfo) {
             if (saveUserErrors) {
@@ -27,8 +26,6 @@ module.exports = {
                 return res.json({
                     'id': newUser._id,
                     'username': newUser.username,
-                    'email': newUser.email,
-                    'password': newUser.password
                 });
             }
         });
@@ -40,14 +37,63 @@ module.exports = {
                 console.log('There was an error getting the data from the database. controller.js');
                 return res.json(errors);
             } else {
+                console.log('returning with the db data');
                 return res.json({
-                        userKey: dbUser
-                    
+                    userKey: dbUser
                 });
 
-                }
-            });
-        }
+            }
+        });
+    },
+    submitNewQuestion: function (req, res) {
+        console.log('Reached the submitNewQuestion function inside controller.js');
+        var newQuestion = new Question({
+            questionText: req.body.questionText,
+            commentText: req.body.commentText
+        });
+        newQuestion.save(function (saveQuestionErrors, newQuestionInfo) {
+            if (saveQuestionErrors) {
+                console.log(saveQuestionErrors);
+                console.log("There was an error inserting the new question into the DB.");
+                return res.json(saveQuestionErrors);
+            } else {
+                console.log("The new question was inserted into the DB.");
+                return res.json({
+                    'id': newQuestion._id,
+                    questionText: req.body.questionText,
+                    commentText: req.body.commentText
+                });
+            }
+        });
+    },
+    getQuestions: function (req, res) {
+        console.log('Reached the getAllUsers function inside controller.js');
+        Question.find({}, function (errors, dbQuestion) {
+            if (errors) {
+                console.log('There was an error getting the questions data from the database. controller.js');
+                return res.json(errors);
+            } else {
+                console.log('returning with the db data');
+                return res.json({
+                    questionKey: dbQuestion
+                });
+            }
+        });
+    },
+    getOneQuestion: function (req, res) {
+        console.log('Reached the getOneQuestion function inside controller.js');
+        Question.find({}, function (errors, dbQuestion) {
+            if (errors) {
+                console.log('There was an error getting the questions data from the database. controller.js');
+                return res.json(errors);
+            } else {
+                console.log('returning with the db data');
+                return res.json({
+                    questionKey: dbQuestion
+                });
+            }
+        });
+    },
 
 
 

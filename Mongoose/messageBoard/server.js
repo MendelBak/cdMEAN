@@ -27,7 +27,7 @@ mongoose.Promise = global.Promise;
 var MessageSchema = new mongoose.Schema({
     username: String,
     message: String,
-    _comments: [{ type: Schema.Types.ObjectId,ref: 'Comment'}]
+    _comments: [{ type: Schema.Types.ObjectId, ref: 'Comment'}]
 }, {
     timestamps: true
 });

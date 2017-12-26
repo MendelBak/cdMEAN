@@ -11,13 +11,17 @@ import { AppComponent } from './app.component';
 import { LoginRegComponent } from './login-reg/login-reg.component';
 import { MainComponent } from './main/main.component';
 import { DataService } from './data.service';
+import { NewQuestionComponent } from './new-question/new-question.component';
+import { ShowQuestionComponent } from './show-question/show-question.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginRegComponent,
-    MainComponent
+    MainComponent,
+    NewQuestionComponent,
+    ShowQuestionComponent
   ],
   imports: [
     BrowserModule,

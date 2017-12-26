@@ -1,6 +1,10 @@
-<h1>This is my angular app.component. I need to connect my angular app to my mongoose/mongo/express apps</h1>
+<h1>Q & A App</h1>
 
+<h1 *ngIf ="loggedUser"> Current Logged In User: {{ loggedUser.username }}</h1>
+
+<button (click)="logoutUser()">Logout</button>
 <a [routerLink]="['/']">Landing</a>
-<a [routerLink]="['main']">Main</a>
+<a [routerLink]="['/main']">Main</a>
+
 
 <router-outlet></router-outlet>

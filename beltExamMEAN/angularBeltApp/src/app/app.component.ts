@@ -8,10 +8,20 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  loggedUser;
 
   constructor(private _dataService: DataService, private _route: ActivatedRoute, private _router: Router) {
-
-    console.log('Hello from app.component.ts');
   }
+
+  ngOnInit() {
+    this.loggedUser = this._dataService.loggedUser;
+  }
+
+  logoutUser() {
+    this.loggedUser = undefined;
+    console.log('The loggedUser has been cleared');
+  }
+
+
 }

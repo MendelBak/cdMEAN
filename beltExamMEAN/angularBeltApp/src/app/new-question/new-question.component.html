@@ -1,0 +1,25 @@
+
+  
+  <div>
+    <form #questionForm="ngForm" (submit)="submitQuestion()">
+  
+      <h3>Ask a Question</h3>
+      <textarea name="questionText" 
+      placeholder="Write Your Question Here" 
+      cols="30" 
+      rows="10"
+      required
+      minlength="10"
+      [(ngModel)]="newQuestion.questionText"
+      #questionTextVar = ngModel></textarea>
+      
+      <textarea 
+      name="commentText" 
+      placeholder="Writing a comment is optional." 
+      cols="30" 
+      rows="10"
+      [(ngModel)]="newQuestion.commentText"></textarea>
+      
+      <button type="submit" [disabled]="!questionForm.valid">Submit Your Question</button>
+    </form>
+  </div>

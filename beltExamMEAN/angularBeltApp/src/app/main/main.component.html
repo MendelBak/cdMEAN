@@ -1,3 +1,20 @@
-<p>
-  main works!
-</p>
+<h1 *ngIf ="loggedUser"> Current Logged In User: {{ loggedUser.username }}</h1>
+
+<a [routerLink]="['/newQuestion']">Ask A Question</a>
+
+
+<div>
+    <table>
+      <thead>
+        <th>Question</th>
+        <th>Comment</th>
+        <th>Answers</th>
+        <th>Action</th>
+        <tr *ngFor="let question of questions, let idx = index">
+          <td>{{ question.questionText | json }}</td>
+          <td>{{ question.commentText | json }}</td>
+          <td><button (click)="showQuestion(idx)">Show Question</button> </td>
+        </tr>
+      </thead>
+    </table>
+  </div>
