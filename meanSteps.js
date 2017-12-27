@@ -8,7 +8,6 @@ npm init -yes
 "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.13.1",
-    "ejs": "1.0.0",
     "express": "~4.10.0",
     "express-session": "^1.15.6",
     "mongoose": "^4.13.7"
@@ -98,30 +97,30 @@ var User = mongoose.model("User");
 var bcrypt = require('bcrypt-nodejs');
 
 module.exports = {
-    index: function (req, res) {
-        res.render("index");
-    },
-    formSubmit: function (req, res) {
-        var newUser = new User({
-            username: req.body.username,
-            email: req.body.email,
-            password: req.body.password
-        });
-        console.log("Made it to controller.js form submit");
-        newUser.save(function (errors, newUserInfo) {
-            if (errors) {
-                console.log(errors);
-                console.log("There was an error inserting the new Mongoose into the DB.");
-                res.redirect("/");
-            } else {
-                console.log("The new mongoose was inserted into the DB.");
-                console.log(req.body);
-                req.session.sessionID = newUserInfo._id;
-                console.log("This is the req.session.sessionID ->", req.session.sessionID);
-                res.redirect("/");
-            }
-        });
-    }
+    // index: function (req, res) {
+    //     res.render("index");
+    // },
+    // formSubmit: function (req, res) {
+    //     var newUser = new User({
+    //         username: req.body.username,
+    //         email: req.body.email,
+    //         password: req.body.password
+    //     });
+    //     console.log("Made it to controller.js form submit");
+    //     newUser.save(function (errors, newUserInfo) {
+    //         if (errors) {
+    //             console.log(errors);
+    //             console.log("There was an error inserting the new user into the DB.");
+    //             res.redirect("/");
+    //         } else {
+    //             console.log("The new user was inserted into the DB.");
+    //             console.log(req.body);
+    //             req.session.sessionID = newUserInfo._id;
+    //             console.log("This is the req.session.sessionID ->", req.session.sessionID);
+    //             res.redirect("/");
+    //         }
+    //     });
+    // }
 
 };
 
@@ -131,18 +130,45 @@ module.exports = {
 // *********************Boilerplate for model.js ********************//
 // SCHEMA DEFINITION  (!!CHANGE THE NAME OF THE SCHEMA!!)//
 var mongoose = require("mongoose");
-var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 var bcrypt = require('bcrypt-nodejs');
 
 
 var UserSchema = new mongoose.Schema({
-    username: String,
-    email: String,
-    password: String
-}, {timestamps: true});
+    username: {
+        type: String,
+        required: [true, "Username must be entered,"],
+        unique: true,
+        minlength: [2, "Usernma must be at least 2 characters long"]
+    },
+    email: {
+        type: String,
+        required: [true, "Email must be entered"],
+        unique: true,
+        validate: {
+            validator: function (value) {
+                return /^[a-zA-Z0-9.!#$%&’*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value);
+            }
+        },
+        message: "Email must be a valid email address."
+    },
+    password: {
+        type: String,
+        required: [true, "Password must be entered"],
+        validate: {
+            validator: function (value) {
+                return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,32}/.test(value);
+            },
+            message: "Password failed validation, you must have at least 1 number, uppercase and special character"
+        }
+    },
+}, {
+    timestamps: true
+});
 
 
 mongoose.model("User", UserSchema);
+
+
 
 // *********** END models.js ******************//
 
@@ -159,7 +185,7 @@ module.exports = function (app) {
     });
     app.post('/formSubmit', function(req, res) {
         controller.formSubmit(req, res);
-        console.log("made it to formsubmit post route")
+        console.log("made it to formsubmit post route");
     });
 
 };
@@ -233,6 +259,7 @@ ng new <project name> --routing
 // Inject components into app-routingmodules.ts file  //
 import { LandingComponent } from './landing/landing.component';
 // Add routing to routing file
+
 const routes: Routes = [
     {
       path: '',
@@ -241,7 +268,7 @@ const routes: Routes = [
       children: []
     }
   ];
-providers: [ DataService ],
+
 
 // Inject modules into your components
 import { Component, OnInit } from '@angular/core';
@@ -251,11 +278,11 @@ import { ActivatedRoute } from '@angular/router';
 
 constructor(private _dataService: DataService, private _route: ActivatedRoute, private _router: Router) { }
 
-// Place this in your constructor
-this._route.paramMap.subscribe( params => {
+{/* // Place this in your constructor */}
+{/* this._route.paramMap.subscribe( params => {
     console.log(params.get('id'));
-});
-//
+}); */}
+{/* // */}
 
 {/* Place this in your app.component/html */}
 <router-outlet></router-outlet>
